@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crate Cafe — Pererenan, Bali</title>
+<meta name="description" content="Crate Cafe. Juice bar, coffee bar and kitchen in Pererenan, Bali. Open daily 6am to 9pm.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bone:#EFEAE1; --paper:#F7F4EE; --ink:#161412; --ink-2:#4A4540; --line:rgba(22,20,18,.14);
+  --red:#B8352D; --serif:"Instrument Serif",Georgia,serif; --sans:"Inter Tight",system-ui,sans-serif;
+  --gut:clamp(16px,4vw,56px); --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bone);color:var(--ink);font:400 15px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+.label{font:500 11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase}
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
+em{font-style:italic}
+
+/* grain */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px var(--gut);color:var(--paper);mix-blend-mode:difference}
+.logo{font:italic 400 30px/1 var(--serif)}
+nav ul{display:flex;gap:32px;list-style:none}
+nav a.label{position:relative}
+nav a.label::after{content:"";position:absolute;left:0;bottom:-5px;height:1px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .6s var(--ease)}
+nav a.label:hover::after{transform:scaleX(1);transform-origin:left}
+
+/* hero */
+.hero{position:relative;height:100svh;min-height:620px;overflow:hidden;background:var(--ink);color:var(--paper)}
+.hero-media{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:2px}
+.hero-media figure{overflow:hidden}
+.hero-media img{transform:scale(1.15);animation:settle 2.4s var(--ease) forwards;filter:saturate(.92)}
+.hero-media figure:nth-child(2) img{animation-delay:.15s}
+.hero-media figure:nth-child(3) img{animation-delay:.3s}
+@keyframes settle{to{transform:scale(1)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,20,18,.35) 0%,rgba(22,20,18,.05) 40%,rgba(22,20,18,.75) 100%)}
+.hero-copy{position:absolute;z-index:2;left:var(--gut);right:var(--gut);bottom:clamp(28px,6vh,64px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.hero h1{font:400 clamp(64px,13vw,220px)/.82 var(--serif);letter-spacing:-.03em}
+.hero h1 span{display:block;overflow:hidden}
+.hero h1 span i{display:block;transform:translateY(105%);animation:rise 1.4s var(--ease) forwards}
+.hero h1 span:nth-child(2) i{animation-delay:.12s}
+@keyframes rise{to{transform:none}}
+.hero-meta{text-align:right;max-width:260px;opacity:0;animation:fade 1.2s .8s var(--ease) forwards}
+.hero-meta p{margin-top:12px;font-size:14px;color:rgba(247,244,238,.8)}
+@keyframes fade{to{opacity:1}}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding:18px 0;white-space:nowrap}
+.marquee div{display:inline-flex;gap:48px;animation:slide 40s linear infinite;font:italic 400 28px/1 var(--serif)}
+.marquee span::after{content:"✦";font-style:normal;font-size:12px;color:var(--red);margin-left:48px;vertical-align:middle}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:clamp(80px,14vw,180px) var(--gut)}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.clip{clip-path:inset(12% 0 12% 0);transition:clip-path 1.6s var(--ease)}
+.clip.in{clip-path:inset(0)}
+.clip img{transform:scale(1.12);transition:transform 2s var(--ease)}
+.clip.in img{transform:scale(1)}
+
+/* intro */
+.intro{display:grid;grid-template-columns:1fr 2fr;gap:var(--gut)}
+.intro h2{font:400 clamp(34px,4.6vw,72px)/1.04 var(--serif);letter-spacing:-.02em;text-indent:12%}
+.intro h2 em{color:var(--red)}
+.intro-foot{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.intro-foot div{padding:20px 20px 0 0}
+.intro-foot b{display:block;font:400 34px/1 var(--serif);margin-bottom:8px}
+.intro-foot span{color:var(--ink-2);font-size:13px}
+
+/* three bars */
+.bars{padding-top:0}
+.bar{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut);align-items:end;padding:clamp(48px,8vw,100px) 0;border-top:1px solid var(--line)}
+.bar .num{grid-column:1/2;align-self:start}
+.bar .img-a{grid-column:2/7;aspect-ratio:4/5;overflow:hidden}
+.bar .img-b{grid-column:7/10;aspect-ratio:3/4;overflow:hidden;align-self:start}
+.bar .txt{grid-column:10/13}
+.bar.flip .img-a{grid-column:7/12;grid-row:1}
+.bar.flip .img-b{grid-column:4/7;grid-row:1;align-self:end}
+.bar.flip .txt{grid-column:1/4;grid-row:1;align-self:start}
+.bar.flip .num{display:none}
+.bar h3{font:400 clamp(44px,5vw,84px)/.9 var(--serif);letter-spacing:-.02em;margin:18px 0 22px}
+.bar p{color:var(--ink-2);max-width:34ch}
+.bar .more{display:inline-block;margin-top:28px;padding-bottom:6px;border-bottom:1px solid var(--ink)}
+
+/* gallery strip */
+.strip{padding:0;background:var(--ink);color:var(--paper);overflow:hidden}
+.strip-head{display:flex;justify-content:space-between;align-items:end;padding:clamp(64px,10vw,130px) var(--gut) 48px}
+.strip-head h2{font:400 clamp(44px,7vw,120px)/.9 var(--serif);letter-spacing:-.03em}
+.strip-head p{max-width:300px;color:rgba(247,244,238,.65)}
+.strip-track{display:flex;gap:14px;padding:0 var(--gut) clamp(64px,10vw,130px);will-change:transform}
+.strip-track figure{flex:0 0 clamp(220px,24vw,360px);aspect-ratio:2/3;overflow:hidden;position:relative}
+.strip-track figure img{transition:transform 1.2s var(--ease)}
+.strip-track figure:hover img{transform:scale(1.05)}
+.strip-track figcaption{position:absolute;left:14px;bottom:14px;font:italic 400 22px/1 var(--serif)}
+
+/* menu */
+.menu-head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:56px}
+.menu-head h2{font:400 clamp(56px,9vw,150px)/.85 var(--serif);letter-spacing:-.03em}
+.menu-head p{max-width:320px;color:var(--ink-2)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px}
+.tabs button{font:500 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:13px 18px;border:1px solid var(--line);border-radius:99px;background:none;color:var(--ink);cursor:pointer;transition:all .4s var(--ease)}
+.tabs button:hover{border-color:var(--ink)}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.panel{display:none;grid-template-columns:1fr 1fr;gap:0 var(--gut)}
+.panel.on{display:grid;animation:fade .8s var(--ease)}
+.panel .group{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline;padding:36px 0 10px;border-bottom:1px solid var(--ink)}
+.panel .group:first-child{padding-top:0}
+.panel .group h4{font:italic 400 32px/1 var(--serif)}
+.panel .group span{font:400 32px/1 var(--serif)}
+.panel .group small{font:500 11px var(--sans);letter-spacing:.12em;color:var(--ink-2);margin-left:10px}
+.item{padding:18px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px}
+.item h5{font:500 15px/1.3 var(--sans);letter-spacing:.01em}
+.item p{color:var(--ink-2);font-size:13px;margin-top:3px}
+.item .tag{font:500 10px/1 var(--sans);letter-spacing:.1em;color:var(--red);white-space:nowrap;padding-top:4px}
+.menu-note{margin-top:40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;color:var(--ink-2);font-size:13px}
+
+/* bar's open */
+.night{position:relative;background:#1B1714;color:var(--paper);display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);align-items:center;overflow:hidden}
+.night .vinyl{aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#0e0c0b 0 2px,#1d1a17 2px 4px);position:relative;max-width:520px;width:100%;margin:auto;animation:spin 9s linear infinite;box-shadow:0 40px 80px rgba(0,0,0,.5)}
+.night .vinyl::after{content:"";position:absolute;inset:34%;border-radius:50%;background:radial-gradient(circle,var(--bone) 0 6%,var(--red) 6.5% 100%)}
+.night .vinyl::before{content:"CRATE · BAR'S OPEN · CRATE · BAR'S OPEN ·";position:absolute;inset:0;z-index:1;display:grid;place-items:center;font:italic 400 14px var(--serif);color:var(--bone);letter-spacing:.2em}
+@keyframes spin{to{transform:rotate(360deg)}}
+.night h2{font:400 clamp(56px,8vw,140px)/.86 var(--serif);letter-spacing:-.03em;margin:22px 0 28px}
+.night h2 em{color:var(--red)}
+.night p{color:rgba(247,244,238,.7);max-width:40ch}
+
+/* goods */
+.goods-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(0,auto);gap:14px;margin-top:64px}
+.goods-grid figure{overflow:hidden;position:relative}
+.goods-grid figcaption{margin-top:12px;display:flex;justify-content:space-between}
+.g1{grid-column:1/6;aspect-ratio:3/4}
+.g2{grid-column:6/9;aspect-ratio:3/4;margin-top:22%}
+.g3{grid-column:9/13;aspect-ratio:3/4}
+.g4{grid-column:2/5;aspect-ratio:3/4;margin-top:-12%}
+.g5{grid-column:6/12;aspect-ratio:4/3}
+.goods-top{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap}
+.goods-top h2{font:400 clamp(56px,9vw,150px)/.85 var(--serif);letter-spacing:-.03em}
+.goods-top h2 em{color:var(--red)}
+
+/* visit */
+.visit{background:var(--paper);display:grid;grid-template-columns:1.1fr 1fr;gap:var(--gut)}
+.visit h2{font:400 clamp(48px,7vw,120px)/.88 var(--serif);letter-spacing:-.03em}
+.visit dl{display:grid;grid-template-columns:120px 1fr;border-top:1px solid var(--line)}
+.visit dt,.visit dd{padding:22px 0;border-bottom:1px solid var(--line)}
+.visit dd{font:400 26px/1.2 var(--serif)}
+.btn{display:inline-flex;align-items:center;gap:12px;margin-top:40px;padding:18px 28px;border-radius:99px;background:var(--ink);color:var(--paper);transition:background .4s var(--ease)}
+.btn:hover{background:var(--red)}
+
+footer{background:var(--ink);color:var(--paper);padding:56px var(--gut) 28px;overflow:hidden}
+footer .big{font:italic 400 clamp(120px,30vw,480px)/.75 var(--serif);letter-spacing:-.04em;color:var(--red);margin-bottom:40px}
+footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;color:rgba(247,244,238,.55);border-top:1px solid rgba(247,244,238,.15);padding-top:24px}
+
+@media (max-width:860px){
+  nav ul{gap:18px} nav ul li:nth-child(n+3){display:none}
+  .hero-media{grid-template-columns:1fr}
+  .hero-media figure:not(:nth-child(2)){display:none}
+  .hero-copy{flex-direction:column;align-items:flex-start}
+  .hero-meta{text-align:left}
+  .intro,.night,.visit{grid-template-columns:1fr}
+  .intro h2{text-indent:0}
+  .intro-foot{grid-template-columns:1fr 1fr}
+  .bar,.bar.flip{grid-template-columns:1fr 1fr;gap:12px}
+  .bar .num,.bar.flip .num{display:block;grid-column:1/-1}
+  .bar .img-a,.bar.flip .img-a{grid-column:1/2;grid-row:auto}
+  .bar .img-b,.bar.flip .img-b{grid-column:2/3;grid-row:auto;align-self:end}
+  .bar .txt,.bar.flip .txt{grid-column:1/-1;grid-row:auto;margin-top:20px}
+  .strip-head{flex-direction:column;align-items:flex-start;gap:20px}
+  .strip-track{overflow-x:auto;scroll-snap-type:x mandatory}
+  .strip-track figure{scroll-snap-align:start;flex-basis:68vw}
+  .panel{grid-template-columns:1fr}
+  .goods-grid{grid-template-columns:1fr 1fr}
+  .goods-grid figure{grid-column:auto!important;margin-top:0!important}
+  .g5{grid-column:1/-1!important}
+  .night .vinyl{max-width:280px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero h1 span i,.reveal{transform:none;opacity:1}.hero-meta{opacity:1}.clip{clip-path:none}.clip img,.hero-media img{transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#top" class="logo">Crate</a>
+  <ul>
+    <li><a class="label" href="#menu">Menu</a></li>
+    <li><a class="label" href="#visit">Visit</a></li>
+    <li><a class="label" href="#bars">Bars</a></li>
+    <li><a class="label" href="#goods">Goods</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-media">
+    <figure><img src="img/shake-straw.jpg" alt="Strawberry chia freakshake topped with cream"></figure>
+    <figure><img src="img/shake-pitaya.jpg" alt="Pink dragonfruit shake with frangipani"></figure>
+    <figure><img src="img/shake-mango.jpg" alt="Mango chia shake topped with fresh flower"></figure>
+  </div>
+  <div class="hero-copy">
+    <h1><span><i>Crate</i></span><span><i><em>Cafe</em></i></span></h1>
+    <div class="hero-meta">
+      <span class="label">Pererenan — Bali</span>
+      <p>Juice bar, coffee bar and kitchen. Fresh every day from six in the morning.</p>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div>
+  <span>Juice Bar</span><span>Coffee Bar</span><span>Super Bowls</span><span>Crate Baked Bread</span><span>Bar's Open</span><span>Street Utility Goods</span>
+  <span>Juice Bar</span><span>Coffee Bar</span><span>Super Bowls</span><span>Crate Baked Bread</span><span>Bar's Open</span><span>Street Utility Goods</span>
+</div></div>
+
+<section class="intro">
+  <span class="label reveal">( About )</span>
+  <div>
+    <h2 class="reveal">A corner of Pererenan where the shakes are loud, the coffee is <em>serious</em>, and the bread is baked in house.</h2>
+    <div class="intro-foot reveal">
+      <div><b>06—21</b><span>Open every day</span></div>
+      <div><b>3</b><span>Bars under one roof</span></div>
+      <div><b>100%</b><span>Free range chick & eggz</span></div>
+      <div><b>Olive</b><span>Oil only, always</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="bars" id="bars">
+  <article class="bar">
+    <span class="label num">01</span>
+    <figure class="img-a clip"><img src="img/shakes-trio.jpg" alt="Three freakshakes on a table"></figure>
+    <figure class="img-b clip"><img src="img/juice-layered.jpg" alt="Layered kiwi and dragonfruit smoothie"></figure>
+    <div class="txt reveal">
+      <span class="label">The Juice Bar</span>
+      <h3>Colour,<br><em>by the glass.</em></h3>
+      <p>Cold pressed juices, chia shakes and smoothie bowls. Fruit from the island, blended to order.</p>
+      <a class="more label" href="#menu" data-tab="juice">See the juices</a>
+    </div>
+  </article>
+  <article class="bar flip">
+    <span class="label num">02</span>
+    <figure class="img-a clip"><img src="img/cans.jpg" alt="Crate Cold brew cans"></figure>
+    <figure class="img-b clip"><img src="img/juice-yellow.jpg" alt="Iced coffee held over a basketball"></figure>
+    <div class="txt reveal">
+      <span class="label">The Coffee Bar</span>
+      <h3>Crate<br><em>blend.</em></h3>
+      <p>Our own roast, pulled straight or shaken into something new. Try the Tira Miss U or a can of Crate Cold to go.</p>
+      <a class="more label" href="#menu" data-tab="coffee">See the coffee</a>
+    </div>
+  </article>
+  <article class="bar">
+    <span class="label num">03</span>
+    <figure class="img-a clip"><img src="img/chef.jpg" alt="Chef plating in the Crate kitchen"></figure>
+    <figure class="img-b clip"><img src="img/bowl-pitaya.jpg" alt="Dragonfruit and strawberry bowl"></figure>
+    <div class="txt reveal">
+      <span class="label">The Kitchen</span>
+      <h3>Brekkie<br><em>till late.</em></h3>
+      <p>Big plates, toasties and super bowls on Crate baked bread. Breakfast is served all day.</p>
+      <a class="more label" href="#menu" data-tab="food">See the food</a>
+    </div>
+  </article>
+</section>
+
+<section class="strip">
+  <div class="strip-head">
+    <h2>Made to be<br><em>photographed.</em></h2>
+    <p>Then finished before the ice melts. A few of the house favourites.</p>
+  </div>
+  <div class="strip-track">
+    <figure><img src="img/shake-choc.jpg" alt="Chocolate freakshake" loading="lazy"><figcaption>Chia Boi</figcaption></figure>
+    <figure><img src="img/bowl-acai.jpg" alt="Banana and granola bowl" loading="lazy"><figcaption>Why So Cereal</figcaption></figure>
+    <figure><img src="img/juice-orange.jpg" alt="Fresh orange juice" loading="lazy"><figcaption>Fast Track</figcaption></figure>
+    <figure><img src="img/smoothies.jpg" alt="Three smoothies" loading="lazy"><figcaption>Smoothies</figcaption></figure>
+    <figure><img src="img/bottle.jpg" alt="Crate water bottle" loading="lazy"><figcaption>Cold Brew</figcaption></figure>
+    <figure><img src="img/hoop.jpg" alt="Basketball hoop against the sky" loading="lazy"><figcaption>Pererenan</figcaption></figure>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="menu-head">
+    <h2 class="reveal">The<br><em>Menu</em></h2>
+    <p class="reveal">Prices in thousand rupiah. V is vegan, GF is gluten free. Ask the team about today's fruit and pastry counter.</p>
+  </div>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-p="juice">Juice Bar</button>
+    <button role="tab" aria-selected="false" data-p="coffee">Coffee Bar</button>
+    <button role="tab" aria-selected="false" data-p="food">Kitchen</button>
+    <button role="tab" aria-selected="false" data-p="bowls">Bowls</button>
+  </div>
+  <div id="panels"></div>
+  <div class="menu-note"><span>Crate blend coffee · Crate baked bread · Olive oil only · Free range chick + eggz</span><span>Wi-Fi: lifescrate</span></div>
+</section>
+
+<section class="night">
+  <div class="vinyl reveal" aria-hidden="true"></div>
+  <div class="reveal">
+    <span class="label">After dark</span>
+    <h2>Bar's<br><em>open.</em></h2>
+    <p>When the sun drops the records come out. Same room, lower lights, the bar stays open until nine. Follow along on Instagram for the nights.</p>
+    <a class="btn label" href="https://www.instagram.com/cratecafe/" target="_blank" rel="noopener">@cratecafe ↗</a>
+  </div>
+</section>
+
+<section id="goods">
+  <div class="goods-top">
+    <h2 class="reveal">Street<br><em>Utility Goods</em></h2>
+    <p class="reveal" style="max-width:320px;color:var(--ink-2)">Made in Crate. Heavy cotton crews, ringers and work jackets, sold at the counter.</p>
+  </div>
+  <div class="goods-grid">
+    <figure class="g1 clip"><img src="img/pinkhoodie.jpg" alt="Pink Crate crewneck" loading="lazy"></figure>
+    <figure class="g2 clip"><img src="img/ringer.jpg" alt="Crate ringer tee" loading="lazy"></figure>
+    <figure class="g3 clip"><img src="img/jersey.jpg" alt="Crate 08 jersey" loading="lazy"></figure>
+    <figure class="g4 clip"><img src="img/madein.jpg" alt="Made in Crate label" loading="lazy"></figure>
+    <figure class="g5 clip"><img src="img/surfboards.jpg" alt="Surfboards in the shop" loading="lazy" style="object-position:50% 40%"></figure>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div>
+    <span class="label reveal">( Visit )</span>
+    <h2 class="reveal" style="margin-top:22px">Come<br>by <em>early.</em></h2>
+  </div>
+  <div class="reveal">
+    <dl>
+      <dt class="label">Hours</dt><dd>Monday to Sunday<br>6:00 am — 9:00 pm</dd>
+      <dt class="label">Address</dt><dd>Jl. Sempol 8, Pererenan<br>Mengwi, Badung, Bali</dd>
+      <dt class="label">Contact</dt><dd><a href="mailto:info@lifescrate.com">info@lifescrate.com</a></dd>
+    </dl>
+    <a class="btn label" href="https://maps.google.com/?q=Crate+Cafe+Pererenan+Bali" target="_blank" rel="noopener">Get directions ↗</a>
+  </div>
+</section>
+
+<footer>
+  <div class="big">Crate</div>
+  <div class="row label">
+    <span>© Crate Cafe, Bali</span>
+    <a href="https://www.instagram.com/cratecafe/" target="_blank" rel="noopener">Instagram ↗</a>
+    <span>Pererenan — 6am to 9pm</span>
+  </div>
+</footer>
+
+<script>
+const M={
+ juice:[["Juices","40","V · GF",[["Fast Track","Orange"],["Waterboy","Watermelon"],["Sal","Strawbs, apple, lime"],["Carolime","Carrot, orange, lime"],["Dr ABC","Apple, beetroot, carrot"],["Greenie","Kiwi, apple, spinach"],["Surfs Up","Mango, pineapple, lime"],["Dragon + Lime H2O",""],["Cucumber + Kiwi H2O",""]]],
+  ["Smoothies","40","V · GF",[["Go Fruit Yself","Strawbs, pineapple, banana"],["Two Timer","Dragon, kiwi, banana"],["Too Good4U","Dragon, strawbs, banana"],["Invigor8","Strawbs, papaya, pineapple"],["Big Bold Banana","Cacao, banana"]]],
+  ["Chia","80","V · GF",[["Chia Boi","Frozen cacao, strawbs, coco milk, banana"],["Pucker Up","Frozen strawbs, coco milk, banana"],["Sweet Ass","Frozen dragon, raspberries, banana"],["Cluster","Frozen mango, pear, banana"],["Bluebs","Blue spirulina, papaya, kiwi, banana"]]],
+  ["Protein Smoothies","60","",[["Hippie Hippie Shake","Muesli, banana, protein"],["Bliss Bomb","Blueberries, banana, yog, mix nutz, protein","GF"],["Cafe Racer","Papaya, banana, yog, protein","GF"],["Wedgie","Raspberries, banana, yog, protein","GF"]]],
+  ["Water","30","",[["Still or Spark H2O",""],["Coconutz",""]]]],
+ coffee:[["Barista","30","",[["Espresso",""],["Long Black",""],["Flat White",""],["Latte",""],["Cappuccino",""]]],
+  ["Specials","50","",[["Mocha",""],["Matcha",""],["Kombucha",""],["Jamu",""]]],
+  ["Coffice","50","GF",[["Freddo","Vanilla, dairy, espresso"],["Tira Miss U","Mascarpone, cream, cocoa, dairy, espresso"],["Bang Bang","Peanut butter, choc hazelnut, dairy, espresso"],["Gaz","Orange juice, manuka honey, espresso"],["E.T","Earl grey, manuka honey, cream"],["Cold Brew","Crate style"]]],
+  ["Frappe","50","",[["Ice Coffee","Frappe","GF"],["Pash Pop","Fruit frappe","V · GF"],["Mimi Lime","Lime frappe","V · GF"],["Chococo","Cacao frappe, cocowhip","V · GF"]]],
+  ["Add ons","+10","",[["Soy · Oat · Almond · Decaf",""]]]],
+ food:[["Brekkie","80","",[["Froot Loop","Fruit of the day","V · GF"],["Brekkie Plate","Eggz any style, tomz, toast, avo, bacon, rocket"],["Frenchy","Smoked ham, mozz, feta, poached egg, tomz, croissant"],["Kiss","French toast, banana, strawbs, cinnamon, maple"],["Calrrito","Bacon burrito","GF"],["Roll Over","Omelette, feta, cherry tomz, basil, toast"],["Veto","Smash avo, feta, salmon, poached egg, cherry tomz, toast"],["The Melville","Bruschetta toast, avo, haloumi, poached egg"],["Good Root","Garlic greens, quinoa, avo, shroomz, tempe, hummus","V · GF"],["Miss Piggy","Pork chop, parmi balls","GF"]]],
+  ["Big Plates","80","",[["The Barber","French toast, scram eggz, bacon, fried banana, maple"],["Stoner","Beef burger"],["Power Ranger","Egg whites, cherry tomz, shroomz, avo","GF"],["Smash It Up","Vegan scram tofu, avo, cherry tomz, onion, toast","V"],["Banger","Beef sausage, pump mash, peas, gravy","GF"],["Benz Eggz","Hashbrown, ham, poached egg, spinach, shroomz, hollandaise"],["It's a Wrap","Tofu, tempe, feta, salad","GF"],["The Mafia","Pizza, mozz, shroomz, salsa, feta, rocket","GF"],["Perkkie","Chick + veggies","GF"],["Lean Machine","Imported beef, baby potatoes, broccoli, asparagus","GF"]]],
+  ["Toasties","80","",[["Ya Bish","Fried eggz + bacon sandwich"],["Sambo","Chick, salad, chz, aioli sandwich"],["TLB","Tomz, lettuce, bacon, aioli sandwich"],["Hallo Me","Haloumi, salad, shroomz, avo, aioli sandwich"],["T.N.T","Tuna melt","GF"],["Wuddup","Vegan falafel, avo, cucumber, beet, hummus on toast","V · GF"]]],
+  ["Munchies","35","",[["Crate Pastry Counter","Ask what came out of the oven today"]]]],
+ bowls:[["Super Bowls","80","",[["Chik Chik Boom","Tossed salad, chick, haloumi, avo, honey mustard"],["Up Your Cool","Salad, salmon, beet, raisins, walnuts, feta, chilli"],["Pack a Punch","Salad, feta, pinenuts, rosemary veges, dill, garlic mayo"]]],
+  ["Smoothie Bowls","80","V",[["Hipstar","Acai, banana, chia, dragon, strawbs, nutz, coconut"],["Why So Cereal","Banana, cacao, peanut butter, choc granola, coconut"],["Blackout","Banana, blueberries, muesli, grapes, coconut milk"],["Brekkie2GoGo","Banana, dragon, nutz, granola, muesli, strawbs"],["Mangolicious","Banana, mango, lime, cashew, pumpkin seeds, papaya"],["Nom Nom","Bircher muesli"],["Mix Up","Yog, granola, muesli, strawbs, watermelon, honey","Dairy"],["Cratezy","Vegan pancakes, strawbs, maple, cocowhip","V"]]]]
+};
+const P=document.getElementById('panels');
+for(const k in M){const d=document.createElement('div');d.className='panel'+(k==='juice'?' on':'');d.id='p-'+k;
+ d.innerHTML=M[k].map(([g,p,t,items])=>`<div class="group"><h4>${g}${t?`<small>${t}</small>`:''}</h4><span>${p}</span></div>`+
+  items.map(([n,desc,tag])=>`<div class="item"><div><h5>${n}</h5>${desc?`<p>${desc}</p>`:''}</div>${tag?`<span class="tag">${tag}</span>`:''}</div>`).join('')).join('');
+ P.appendChild(d);}
+const tabs=[...document.querySelectorAll('.tabs button')];
+function show(k){tabs.forEach(b=>b.setAttribute('aria-selected',b.dataset.p===k));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+k));}
+tabs.forEach(b=>b.onclick=()=>show(b.dataset.p));
+document.querySelectorAll('[data-tab]').forEach(a=>a.addEventListener('click',()=>show(a.dataset.tab)));
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal,.clip').forEach(el=>io.observe(el));
+
+// horizontal drift on desktop
+const track=document.querySelector('.strip-track'),strip=document.querySelector('.strip');
+const mq=matchMedia('(min-width:861px) and (prefers-reduced-motion:no-preference)');
+addEventListener('scroll',()=>{if(!mq.matches){track.style.transform='';return}
+ const r=strip.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight-r.top)/(innerHeight+r.height)));
+ track.style.transform=`translateX(${-p*Math.max(0,track.scrollWidth-innerWidth)}px)`;},{passive:true});
+</script>
+</body>
+</html>
