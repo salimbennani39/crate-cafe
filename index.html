@@ -125,14 +125,31 @@ section{padding:clamp(80px,14vw,180px) var(--gut)}
 .menu-note{margin-top:40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;color:var(--ink-2);font-size:13px}
 
 /* bar's open */
-.night{position:relative;background:#1B1714;color:var(--paper);display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);align-items:center;overflow:hidden}
-.night .vinyl{aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#0e0c0b 0 2px,#1d1a17 2px 4px);position:relative;max-width:520px;width:100%;margin:auto;animation:spin 9s linear infinite;box-shadow:0 40px 80px rgba(0,0,0,.5)}
-.night .vinyl::after{content:"";position:absolute;inset:34%;border-radius:50%;background:radial-gradient(circle,var(--bone) 0 6%,var(--red) 6.5% 100%)}
-.night .vinyl::before{content:"CRATE · BAR'S OPEN · CRATE · BAR'S OPEN ·";position:absolute;inset:0;z-index:1;display:grid;place-items:center;font:italic 400 14px var(--serif);color:var(--bone);letter-spacing:.2em}
+.night{position:relative;background:#141110;color:var(--paper);overflow:hidden}
+.ev-head{display:grid;grid-template-columns:1.2fr 1fr;gap:var(--gut);align-items:end}
+.ev-intro{display:grid;grid-template-columns:120px 1fr;gap:28px;align-items:center}
+.ev-intro .btn{grid-column:2;margin-top:8px;justify-self:start}
+.night .vinyl{aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#0a0908 0 2px,#221e1b 2px 4px);position:relative;width:120px;animation:spin 6s linear infinite;box-shadow:0 20px 40px rgba(0,0,0,.6)}
+.night .vinyl::after{content:"";position:absolute;inset:32%;border-radius:50%;background:radial-gradient(circle,var(--bone) 0 8%,var(--red) 9% 100%)}
 @keyframes spin{to{transform:rotate(360deg)}}
-.night h2{font:400 clamp(56px,8vw,140px)/.86 var(--serif);letter-spacing:-.03em;margin:22px 0 28px}
+.night h2{font:400 clamp(64px,10vw,180px)/.84 var(--serif);letter-spacing:-.03em;margin-top:22px}
 .night h2 em{color:var(--red)}
-.night p{color:rgba(247,244,238,.7);max-width:40ch}
+.night p{color:rgba(247,244,238,.7);max-width:42ch}
+.ev-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:clamp(56px,8vw,100px)}
+.ev-grid figure{overflow:hidden}
+.ev-grid img{filter:saturate(.85) contrast(1.05)}
+.e-a{grid-column:1/6;grid-row:span 2;aspect-ratio:3/4.4}
+.e-b{grid-column:6/13;aspect-ratio:16/10}
+.e-c{grid-column:6/9;aspect-ratio:3/4}
+.e-d{grid-column:9/13;aspect-ratio:4/3.2}
+.e-e{grid-column:2/7;aspect-ratio:4/3;margin-top:14px}
+.e-f{grid-column:7/11;aspect-ratio:4/5;margin-top:-18%}
+.ev-list{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(56px,8vw,110px);border-top:1px solid rgba(247,244,238,.18)}
+.ev-list li{padding:24px 24px 0 0}
+.ev-list h3{font:400 clamp(30px,2.6vw,42px)/1 var(--serif);margin:16px 0 12px}
+.ev-list h3 em{color:var(--red)}
+.ev-list p{font-size:14px}
+.ev-list a{border-bottom:1px solid currentColor}
 
 /* goods */
 .goods-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(0,auto);gap:14px;margin-top:64px}
@@ -181,7 +198,14 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;c
   .goods-grid{grid-template-columns:1fr 1fr}
   .goods-grid figure{grid-column:auto!important;margin-top:0!important}
   .g5{grid-column:1/-1!important}
-  .night .vinyl{max-width:280px}
+  .ev-head{grid-template-columns:1fr}
+  .ev-intro{grid-template-columns:72px 1fr;gap:18px}
+  .night .vinyl{width:72px}
+  .ev-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .ev-grid figure{grid-column:auto!important;grid-row:auto!important;margin-top:0!important;aspect-ratio:3/4!important}
+  .ev-grid .e-b{grid-column:1/-1!important;aspect-ratio:16/10!important}
+  .ev-grid .e-a{grid-column:1/-1!important;aspect-ratio:4/5!important}
+  .ev-list{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -195,8 +219,8 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;c
   <a href="#top" class="logo">Crate</a>
   <ul>
     <li><a class="label" href="#menu">Menu</a></li>
+    <li><a class="label" href="#events">Events</a></li>
     <li><a class="label" href="#visit">Visit</a></li>
-    <li><a class="label" href="#bars">Bars</a></li>
     <li><a class="label" href="#goods">Goods</a></li>
   </ul>
 </nav>
@@ -217,8 +241,8 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;c
 </header>
 
 <div class="marquee" aria-hidden="true"><div>
-  <span>Juice Bar</span><span>Coffee Bar</span><span>Super Bowls</span><span>Crate Baked Bread</span><span>Bar's Open</span><span>Street Utility Goods</span>
-  <span>Juice Bar</span><span>Coffee Bar</span><span>Super Bowls</span><span>Crate Baked Bread</span><span>Bar's Open</span><span>Street Utility Goods</span>
+  <span>Juice Bar</span><span>Coffee Bar</span><span>Super Bowls</span><span>Crate Baked Bread</span><span>Crate Concept</span><span>Street Utility Goods</span>
+  <span>Juice Bar</span><span>Coffee Bar</span><span>Super Bowls</span><span>Crate Baked Bread</span><span>Crate Concept</span><span>Street Utility Goods</span>
 </div></div>
 
 <section class="intro">
@@ -300,14 +324,34 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;c
   <div class="menu-note"><span>Crate blend coffee · Crate baked bread · Olive oil only · Free range chick + eggz</span><span>Wi-Fi: lifescrate</span></div>
 </section>
 
-<section class="night">
-  <div class="vinyl reveal" aria-hidden="true"></div>
-  <div class="reveal">
-    <span class="label">After dark</span>
-    <h2>Bar's<br><em>open.</em></h2>
-    <p>When the sun drops the records come out. Same room, lower lights, the bar stays open until nine. Follow along on Instagram for the nights.</p>
-    <a class="btn label" href="https://www.instagram.com/cratecafe/" target="_blank" rel="noopener">@cratecafe ↗</a>
+<section class="night" id="events">
+  <div class="ev-head">
+    <div class="reveal">
+      <span class="label">Crate Concept — Event Space</span>
+      <h2>After<br><em>dark.</em></h2>
+    </div>
+    <div class="reveal ev-intro">
+      <div class="vinyl" aria-hidden="true"></div>
+      <p>When the sun drops, Crate turns into Crate Concept. Live bands on the floor, DJs on the record bar, performance, art openings and nights you hear about the morning after.</p>
+      <a class="btn label" href="https://www.instagram.com/crate.concept/" target="_blank" rel="noopener">@crate.concept ↗</a>
+    </div>
   </div>
+
+  <div class="ev-grid">
+    <figure class="clip e-a"><img src="img/ev-singer-gold.jpg" alt="Singer silhouetted under warm stage light" loading="lazy"></figure>
+    <figure class="clip e-b"><img src="img/ev-dj.jpg" alt="DJ at the Crate record bar under the On Air sign" loading="lazy"></figure>
+    <figure class="clip e-c"><img src="img/ev-guitar.jpg" alt="Guitarist under blue light" loading="lazy"></figure>
+    <figure class="clip e-d"><img src="img/ev-dancer.jpg" alt="Dancer performing in the crowd" loading="lazy"></figure>
+    <figure class="clip e-e"><img src="img/ev-crowd.jpg" alt="Crowd jumping at a gig" loading="lazy"></figure>
+    <figure class="clip e-f"><img src="img/ev-dj2.jpg" alt="DJ on the decks with headphones" loading="lazy"></figure>
+  </div>
+
+  <ul class="ev-list">
+    <li class="reveal"><span class="label">01</span><h3>Live <em>music</em></h3><p>Local bands and touring acts, loud and close.</p></li>
+    <li class="reveal"><span class="label">02</span><h3>Record <em>bar</em></h3><p>DJ sets played on vinyl from the Crate wall.</p></li>
+    <li class="reveal"><span class="label">03</span><h3>Art & <em>performance</em></h3><p>Exhibitions, dance and one-off shows.</p></li>
+    <li class="reveal"><span class="label">04</span><h3>Private <em>hire</em></h3><p>Book the space for launches and parties. <a href="mailto:info@lifescrate.com">info@lifescrate.com</a></p></li>
+  </ul>
 </section>
 
 <section id="goods">
