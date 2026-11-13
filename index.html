@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
 <title>Crate Cafe — Pererenan, Bali</title>
 <meta name="description" content="Crate Cafe. Juice bar, coffee bar and kitchen in Pererenan, Bali. Open daily 6am to 9pm.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -211,6 +212,12 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;c
   *,*::before,*::after{animation:none!important;transition:none!important}
   .hero h1 span i,.reveal{transform:none;opacity:1}.hero-meta{opacity:1}.clip{clip-path:none}.clip img,.hero-media img{transform:none}
 }
+</style>
+<style>
+.sc-preview{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);color:var(--bone);font:500 10.5px/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:9px 16px calc(9px + env(safe-area-inset-bottom))}
+.sc-preview a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+body{padding-bottom:36px}
+@media (max-width:420px){.sc-preview{letter-spacing:.05em;font-size:9.5px}}
 </style>
 </head>
 <body>
@@ -431,5 +438,6 @@ addEventListener('scroll',()=>{if(!mq.matches){track.style.transform='';return}
  const r=strip.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight-r.top)/(innerHeight+r.height)));
  track.style.transform=`translateX(${-p*Math.max(0,track.scrollWidth-innerWidth)}px)`;},{passive:true});
 </script>
+<div class="sc-preview" role="note">Preview by <a href="https://showcasecreativehouse.com" target="_blank" rel="noopener">SHOWCASE</a> for Crate · not live yet</div>
 </body>
 </html>
